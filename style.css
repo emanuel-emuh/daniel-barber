@@ -1,0 +1,464 @@
+/* 1. IMPORTANDO AS FONTES NOVAS (Anton, Great Vibes e Montserrat) */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Montserrat:wght@300;400;600;800&display=swap');
+
+:root {
+    /* Cores e Variáveis Padrão */
+    --font-main: 'Montserrat', sans-serif;
+    --font-masc: 'Anton', sans-serif;      /* Fonte Masculina (Daniel) */
+    --font-fem: 'Great Vibes', cursive;    /* Fonte Feminina (Lindalva) */
+    --transition: all 0.3s ease;
+}
+
+/* --- TEMA DANIEL (Dark & Blue) --- */
+body.theme-daniel {
+    --bg-color: #0a0a0a;
+    --card-bg: #141414;
+    --text-color: #ffffff;
+    --text-muted: #a0a0a0;
+    --accent: #007bff; /* Azul Vibrante */
+    --accent-glow: rgba(0, 123, 255, 0.5);
+    --glass: rgba(255, 255, 255, 0.05);
+}
+
+/* --- TEMA LINDALVA (Light & Pink) --- */
+body.theme-lindalva {
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --text-muted: #666666;
+    --accent: #e83e8c; /* Rosa Moderno */
+    --accent-glow: rgba(232, 62, 140, 0.3);
+    --glass: rgba(0, 0, 0, 0.03);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+}
+
+/* --- Navegação --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.switch-btn {
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid var(--accent);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: var(--transition);
+    background: rgba(0,0,0,0.3); /* Fundo leve para leitura */
+    backdrop-filter: blur(5px);
+}
+
+.switch-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-color));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    animation: fadeInUp 1s ease;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 30px var(--accent-glow);
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+/* --- TÍTULOS PERSONALIZADOS --- */
+
+/* Título Masculino (Fonte Anton) */
+.title-masculine {
+    font-family: var(--font-masc);
+    font-size: 5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    line-height: 1;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Título Feminino (Fonte Great Vibes) */
+.title-feminine {
+    font-family: var(--font-fem);
+    font-size: 6rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1;
+    color: var(--accent);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- Botões --- */
+.cta-box {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-neon {
+    background: var(--accent);
+    color: #fff;
+    padding: 15px 45px;
+    /* SEM RAIO (Quadrado) como pediu */
+    border-radius: 0px; 
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 20px var(--accent-glow);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-neon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px var(--accent-glow);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--text-muted);
+    color: var(--text-color);
+    padding: 15px 30px;
+    border-radius: 0px; /* Quadrado também para combinar */
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* --- NOVO: SEÇÃO DE CATÁLOGO --- */
+.catalog-section { padding: 80px 20px; }
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.catalog-item {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px; /* Levemente arredondado nos cards apenas */
+    border: 1px solid var(--glass);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.catalog-item:hover {
+    border-color: var(--accent);
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.service-info h3 { font-size: 1.1rem; margin-bottom: 5px; font-weight: 700; }
+.service-info p { font-size: 0.85rem; color: var(--text-muted); }
+
+.service-price {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+/* --- Caixa "Serviço Personalizado" --- */
+.custom-section {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.custom-box {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card-bg);
+    border: 1px solid var(--glass);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.custom-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 30%; width: 40%; height: 3px;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.custom-box h2 { font-size: 1.8rem; margin-bottom: 15px; }
+.custom-box p { color: var(--text-muted); margin-bottom: 30px; }
+
+.btn-white {
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 12px 35px;
+    border-radius: 0px; /* Quadrado */
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+.btn-white:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* --- Tour Visual (Galeria) --- */
+.tour-section { padding: 80px 20px; text-align: center; }
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img { transform: scale(1.1); }
+
+/* --- Localização (GPS) --- */
+.location-section {
+    padding: 60px 20px;
+    background: var(--card-bg);
+    text-align: center;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    margin: 30px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--glass);
+    box-shadow: 0 0 30px rgba(0,0,0,0.1); 
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(100%) invert(92%) contrast(83%);
+}
+
+body.theme-lindalva .map-container iframe {
+    filter: none;
+}
+
+/* --- Seção de Clientes e Resultados --- */
+.clients-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.client-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.client-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 40px var(--accent-glow);
+}
+
+.card-image {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.client-card:hover .card-image img { transform: scale(1.1); }
+
+.card-info {
+    padding: 25px;
+    text-align: left;
+    background: var(--card-bg);
+    position: relative;
+    z-index: 2;
+}
+
+.client-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.client-name { font-weight: 700; font-size: 1.1rem; color: var(--text-color); }
+.stars { color: #FFD700; font-size: 0.9rem; }
+.client-feedback { font-size: 0.95rem; color: var(--text-muted); font-style: italic; }
+
+.service-tag {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: var(--accent);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 5;
+}
+
+/* --- Footer e Botão Flutuante --- */
+footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--glass);
+    color: var(--text-muted);
+}
+
+.social-links a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+.social-links a:hover { color: var(--accent); }
+
+.float-wa {
+    position: fixed;
+    bottom: 25px; right: 25px;
+    width: 65px; height: 65px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 32px;
+    box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+    z-index: 100;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.float-wa:hover { transform: scale(1.1); }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+@media (max-width: 768px) {
+    .title-masculine { font-size: 3.5rem; }
+    .title-feminine { font-size: 4rem; }
+}
