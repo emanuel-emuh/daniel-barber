@@ -1,4 +1,4 @@
-/* 1. IMPORTANDO AS FONTES NOVAS (Anton, Great Vibes e Montserrat) */
+/* 1. IMPORTANDO AS FONTES (Anton, Great Vibes e Montserrat) */
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Great+Vibes&family=Montserrat:wght@300;400;600;800&display=swap');
 
 :root {
@@ -151,8 +151,7 @@ body {
     background: var(--accent);
     color: #fff;
     padding: 15px 45px;
-    /* SEM RAIO (Quadrado) como pediu */
-    border-radius: 0px; 
+    border-radius: 0px; /* Quadrado */
     text-decoration: none;
     font-weight: 700;
     text-transform: uppercase;
@@ -174,7 +173,7 @@ body {
     border: 2px solid var(--text-muted);
     color: var(--text-color);
     padding: 15px 30px;
-    border-radius: 0px; /* Quadrado também para combinar */
+    border-radius: 0px; /* Quadrado */
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
@@ -209,7 +208,7 @@ body {
 .catalog-item {
     background: var(--card-bg);
     padding: 25px;
-    border-radius: 10px; /* Levemente arredondado nos cards apenas */
+    border-radius: 10px;
     border: 1px solid var(--glass);
     display: flex;
     justify-content: space-between;
@@ -271,6 +270,7 @@ body {
     text-decoration: none;
     font-weight: 700;
     transition: var(--transition);
+    display: inline-block; /* Importante para o botão respeitar padding */
 }
 .btn-white:hover {
     background: var(--accent);
@@ -458,7 +458,30 @@ footer {
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
+/* --- CORREÇÕES PARA CELULAR (Mobile Fix) --- */
 @media (max-width: 768px) {
+    /* Corrige o tamanho dos títulos no celular */
     .title-masculine { font-size: 3.5rem; }
     .title-feminine { font-size: 4rem; }
+
+    /* Ajusta a caixa de orçamento para não ficar espremida */
+    .custom-box {
+        padding: 40px 15px !important; /* Menos margem interna nas laterais */
+        width: 95%; /* Ocupa quase toda a largura da tela */
+        margin: 0 auto;
+    }
+
+    /* Ajusta o botão de orçamento para o texto caber em uma linha */
+    .btn-white {
+        padding: 12px 15px !important; /* Reduz o espaço lateral do botão */
+        font-size: 0.8rem; /* Diminui levemente a fonte */
+        width: 100%; /* O botão ocupa a largura disponível se precisar */
+        max-width: 300px; /* Mas não fica gigante */
+        white-space: nowrap; /* Tenta manter o texto na mesma linha */
+    }
+
+    /* Ajusta o tamanho da fonte do título dentro da caixa */
+    .custom-box h2 {
+        font-size: 1.5rem;
+    }
 }
